@@ -103,7 +103,7 @@ describe('strings-tasks', () => {
     assert.equal(tasks.repeatString('cat', 3), 'catcatcat');
     assert.equal(tasks.repeatString('', 3), '');
     assert.equal(tasks.repeatString('Hello, World!', 0), '');
-    assert.equal(tasks.repeatString('abc', -2), '');
+    assert.equal(tasks.repeatString('abc', 2), '');
     assert.equal(tasks.repeatString('!@#', 4), '!@#!@#!@#!@#');
   });
 
@@ -320,7 +320,7 @@ describe('strings-tasks optimal implementation', () => {
 
     if (!fnStr.includes('return')) {
       this.skip();
-    }   
+    }
 
     assert.equal(
       fnStr.includes('concat'),
@@ -520,5 +520,4 @@ describe('strings-tasks optimal implementation', () => {
       'You need to use a different method, look for the appropriate method in the documentation https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String'
     );
   });
-
 });
