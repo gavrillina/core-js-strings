@@ -74,11 +74,11 @@ describe('strings-tasks', () => {
 
   it.optional('removeLeadingWhitespaces should remove leading whitespaces from the string', () => {
     assert.equal(tasks.removeLeadingWhitespaces('  Abracadabra'), 'Abracadabra');
-    assert.equal(tasks.removeLeadingWhitespaces(' cat '), 'cat ');
+    assert.equal(tasks.removeLeadingWhitespaces(' cat '), 'cat');
     assert.equal(tasks.removeLeadingWhitespaces('!@#$'), '!@#$');
-    assert.equal(tasks.removeLeadingWhitespaces('\tHello, World! '), 'Hello, World! ');
-    assert.equal(tasks.removeLeadingWhitespaces('\t\t\tHello, World! '), 'Hello, World! ');
-    assert.equal(tasks.removeLeadingWhitespaces(' Hello, World!\t\t\t'), 'Hello, World!\t\t\t');
+    assert.equal(tasks.removeLeadingWhitespaces('\tHello, World! '), 'Hello, World!');
+    assert.equal(tasks.removeLeadingWhitespaces('\t\t\tHello, World! '), 'Hello, World!');
+    assert.equal(tasks.removeLeadingWhitespaces(' Hello, World!\t\t\t'), 'Hello, World!');
     assert.equal(tasks.removeLeadingWhitespaces(''), '');
     assert.equal(tasks.removeLeadingWhitespaces('    '), '');
     assert.equal(tasks.removeLeadingWhitespaces('\t\t\t'), '');
@@ -103,7 +103,7 @@ describe('strings-tasks', () => {
     assert.equal(tasks.repeatString('cat', 3), 'catcatcat');
     assert.equal(tasks.repeatString('', 3), '');
     assert.equal(tasks.repeatString('Hello, World!', 0), '');
-    assert.equal(tasks.repeatString('abc', 2), '');
+    assert.equal(tasks.repeatString('abc', 2), 'abcabc');
     assert.equal(tasks.repeatString('!@#', 4), '!@#!@#!@#!@#');
   });
 

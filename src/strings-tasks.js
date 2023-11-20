@@ -20,6 +20,9 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(value) {
+  if (value == null || value === undefined) {
+    return 0;
+  }
   return value.length;
 }
 
@@ -54,7 +57,7 @@ function isString(value) {
  *   concatenateStrings('', 'bb') => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return value1 + value2;
+  return value1.concat('', value2);
 }
 
 /**
@@ -69,7 +72,7 @@ function concatenateStrings(value1, value2) {
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  value.charAt(0);
+  return value.charAt(0);
 }
 
 /**
@@ -99,7 +102,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
 function removeLeadingWhitespaces(value) {
-  return value.trim();
+  return value.trimStart();
 }
 
 /**
@@ -114,7 +117,7 @@ function removeLeadingWhitespaces(value) {
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
 function removeTrailingWhitespaces(value) {
-  return value.replace(/\s+$/, '');
+  return value.trimEnd();
 }
 
 /**
@@ -164,8 +167,8 @@ function removeFirstOccurrences(str, value) {
  */
 function removeLastOccurrences(str, value) {
   const reversingString = str.split('').reverse().join('');
-  reversingString.replace(value, '');
-  return reversingString.split('').reverse().join('');
+  const reversValue = value.split('').reverse().join('');
+  return reversingString.replace(reversValue, '').split('').reverse().join('');
 }
 
 /**
@@ -202,7 +205,7 @@ function sumOfCodes(str) {
  *   startsWith('Hello World', 'Hello') => true
  */
 function startsWith(str, substr) {
-  return str.startsWith(substr);
+  return str.startsWith(substr, 0);
 }
 
 /**
@@ -217,8 +220,7 @@ function startsWith(str, substr) {
  *   endsWith('Hello World', 'Hello') => false
  */
 function endsWith(str, substr) {
-  const position = str.search(substr);
-  return str.startsWith(substr, position);
+  return str.endsWith(substr);
 }
 
 /**
@@ -238,7 +240,7 @@ function formatTime(minutes, seconds) {
   const date = new Date(0);
   date.setMinutes(minutes);
   date.setSeconds(seconds);
-  return date.toISOString().split(':');
+  return date.toLocaleTimeString().substring(2, 7);
 }
 
 /**
@@ -340,7 +342,7 @@ function findLongestWord(sentence) {
   const strSplit = sentence.split(' ');
   let longestWord = '';
   for (let i = 0; i < strSplit.length; i += 1) {
-    if (strSplit[i].length > longestWord) {
+    if (strSplit[i].length > longestWord.length) {
       longestWord = strSplit[i];
     }
   }
